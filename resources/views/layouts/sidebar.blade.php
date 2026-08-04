@@ -12,19 +12,11 @@
 }
 
 /* ==========================
+   SIDEBAR BASE (FIXED DESKTOP)
+========================== */
+/* ==========================
    SIDEBAR BASE (DESKTOP FIXED)
 ========================== */
-.sidebar-custom {
-    /* Hilangkan tampilan scrollbar di Chrome, Safari, dan Edge */
-.sidebar-custom::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
-/* Hilangkan tampilan scrollbar di Firefox dan IE */
-.sidebar-custom 
-    -ms-overflow-style: none;  /* IE & Edge */
-    scrollbar-width: none;  /* Firefox */
 .sidebar-custom {
     width: var(--sidebar-width);
     height: 100vh;
@@ -39,7 +31,12 @@
     border-right: 1px solid var(--bg-light-navy);
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* <--- GANTI DI SINI (Matikan scrollbar total) */
+
+    /* --- SCROLLBAR DIMATIKAN TOTAL --- */
+    overflow: hidden !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     transition: all 0.3s ease-in-out;
     position: fixed;
     top: 0;
@@ -47,6 +44,13 @@
     z-index: 1030;
 }
 
+/* Sembunyikan scrollbar bawaan Chrome & Edge */
+.sidebar-custom::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
+
+/* KODE DI BAWAH INI TETAP/TIDAK DIUBAH */
 .sidebar-custom::after {
     content: "";
     position: absolute;

@@ -4,8 +4,6 @@
 
 @section('content')
 
-@include('layouts.navbar')
-
 <style>
     /* CSS VARIABLES: DEFAULT DARK MODE (CYBERSPACE THEME) */
     :root {
@@ -496,7 +494,7 @@
                             <span class="text-muted-theme small">Status Peran:</span>
                             <span class="badge bg-accent-subtle-custom fw-semibold text-capitalize">
                                 @if(is_object(auth()->user()->role))
-                                    {{ optional(auth()->user()->role)->name ?? '' ?? 'Petugas' }}
+                                    {{ optional(auth()->user()->role)->name ?? 'Petugas' }}
                                 @else
                                     {{ auth()->user()->role ?? 'Petugas' }}
                                 @endif

@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Penyesuaian area Konten Utama agar tidak tertutup/tertindih Sidebar */
+        /* Penyesuaian area Konten Utama agar pas disandingkan dengan Sidebar */
         @media (min-width: 992px) {
             .main-wrapper {
                 margin-left: var(--sidebar-width) !important;
@@ -39,7 +39,10 @@
 </head>
 <body class="antialiased">
 
-    {{-- KONTEN UTAMA HALAMAN --}}
+    {{-- 1. PEMANGGILAN SIDEBAR (Sesuaikan path folder file sidebar kamu jika beda) --}}
+    @include('layouts.sidebar')
+
+    {{-- 2. KONTEN UTAMA HALAMAN --}}
     <div class="main-wrapper min-vh-100">
 
         {{-- Alert Notifikasi Success --}}
@@ -63,7 +66,7 @@
         @endif
 
         {{-- Main Content --}}
-        <main>
+        <main class="p-3 p-md-4">
             @yield('content')
         </main>
     </div>
