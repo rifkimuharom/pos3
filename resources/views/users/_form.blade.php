@@ -1,85 +1,91 @@
 @csrf
 
 <style>
+    /* ==========================================================
+       VARIAEL TEMA ROYAL BLUE MODERN (SERAGAM KUDE POS)
+    ========================================================== */
     :root {
-        --bg-dark-navy: #0a192f;
-        --bg-slate-navy: #112240;
-        --bg-light-navy: #233554;
-        --cyan-accent: #64ffda;
-        --text-slate: #8892b0;
-        --text-light-slate: #ccd6f6;
-        --white: #e6f1ff;
-        --danger: #ff6b6b;
+        --bg-body-soft: #f0f5ff;       /* Background Halaman Soft Light Blue */
+        --card-white: #ffffff;         /* Background Card/Form Putih */
+        --input-bg: #f8fafc;          /* Background Input Soft */
+        --border-soft: #cbd5e1;        /* Border Soft Slate */
+        --royal-blue: #0d6efd;         /* Biru Royal Utama */
+        --royal-blue-hover: #0b5ed7;   /* Biru Royal Hover */
+        --text-dark: #0f172a;          /* Teks Utama Gelap Kontras */
+        --text-muted: #64748b;         /* Sub-teks */
     }
 
     /* Form Text & Labels */
     .form-label-custom {
-        font-weight: 600;
-        color: var(--text-light-slate);
+        font-weight: 700;
+        color: var(--text-dark);
         font-size: 0.875rem;
         margin-bottom: 0.35rem;
     }
 
     /* Inputs & Selects Theme */
     .form-control-custom, .form-select-custom {
-        background-color: var(--bg-slate-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
-        color: var(--white) !important;
+        background-color: var(--input-bg) !important;
+        border: 1px solid var(--border-soft) !important;
+        color: var(--text-dark) !important;
         border-radius: 12px;
         padding: 0.65rem 0.9rem;
+        font-weight: 600;
         transition: all 0.3s ease;
     }
 
     .form-control-custom::placeholder {
-        color: var(--text-slate) !important;
+        color: var(--text-muted) !important;
+        font-weight: 400;
     }
 
     .form-control-custom:focus, .form-select-custom:focus {
-        background-color: var(--bg-slate-navy) !important;
-        border-color: var(--cyan-accent) !important;
-        box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.15) !important;
-        color: var(--white) !important;
+        background-color: #ffffff !important;
+        border-color: var(--royal-blue) !important;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15) !important;
+        color: var(--text-dark) !important;
     }
 
     /* Dropdown Options */
     .form-select-custom option {
-        background-color: var(--bg-slate-navy);
-        color: var(--white);
+        background-color: #ffffff;
+        color: var(--text-dark);
     }
 
     /* Input Icons Styling */
     .input-group-text-custom {
-        background-color: var(--bg-light-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
+        background-color: #e0f2fe !important;
+        border: 1px solid #bae6fd !important;
         border-right: none !important;
-        color: var(--cyan-accent) !important;
+        color: var(--royal-blue) !important;
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
     }
 
-    /* Button Gradient Submit (Aksen Cyan #64FFDA) */
+    /* Button Gradient Submit (Aksen Royal Blue) */
     button.btn-gradient-submit {
-        background: var(--cyan-accent) !important;
+        background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
         border: none !important;
-        color: #0a192f !important;
+        color: #ffffff !important;
         padding: 0.65rem 1.75rem;
         border-radius: 50px;
         font-weight: 700;
-        box-shadow: 0 5px 20px rgba(100, 255, 218, 0.25);
+        box-shadow: 0 4px 15px rgba(13, 110, 253, 0.25);
         transition: all 0.3s ease;
     }
 
     .btn-gradient-submit:hover {
+        background: linear-gradient(135deg, #0b5ed7 0%, #0a58ca 100%) !important;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
-        background: #52e0c4 !important;
+        box-shadow: 0 6px 20px rgba(13, 110, 253, 0.35);
+        color: #ffffff !important;
     }
 
     /* Button Secondary Soft */
     a.btn-soft-secondary {
-        background-color: var(--bg-light-navy) !important;
-        color: var(--text-light-slate) !important;
-        border: 1px solid rgba(100, 255, 218, 0.2) !important;
+        background-color: #f1f5f9 !important;
+        color: var(--text-muted) !important;
+        border: 1px solid var(--border-soft) !important;
         padding: 0.65rem 1.75rem;
         border-radius: 50px;
         font-weight: 600;
@@ -88,9 +94,9 @@
     }
 
     .btn-soft-secondary:hover {
-        background-color: rgba(100, 255, 218, 0.1) !important;
-        color: var(--cyan-accent) !important;
-        border-color: var(--cyan-accent) !important;
+        background-color: #e2e8f0 !important;
+        color: var(--text-dark) !important;
+        border-color: #cbd5e1 !important;
         transform: translateY(-2px);
     }
 
@@ -101,9 +107,9 @@
         height: 100px;
         border-radius: 50%;
         overflow: hidden;
-        border: 2px solid var(--cyan-accent);
-        box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
-        background-color: var(--bg-slate-navy);
+        border: 3px solid var(--royal-blue);
+        box-shadow: 0 0 15px rgba(13, 110, 253, 0.2);
+        background-color: #f8fafc;
     }
 
     .avatar-preview-img {

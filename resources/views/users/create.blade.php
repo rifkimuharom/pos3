@@ -7,37 +7,52 @@
 @include('layouts.navbar')
 
 <style>
+    /* ==========================================================
+       1. COLOR PALETTE & CORE THEME (KUDE POS ROYAL BLUE)
+    ========================================================== */
     :root {
-        --bg-dark-navy: #0a192f;
-        --bg-slate-navy: #112240;
-        --bg-light-navy: #233554;
-        --cyan-accent: #64ffda;
-        --text-slate: #8892b0;
-        --text-light-slate: #ccd6f6;
-        --white: #e6f1ff;
+        --bg-body: #ebf3fe;              /* Latar belakang biru soft terang */
+        --card-bg: #ffffff;              /* Background kartu putih */
+        --input-bg: #ffffff;              /* Form input putih */
+        --border-color: #cbd5e1;          /* Border halus */
+        --blue-primary: #0d6efd;         /* Warna Royal Blue utama */
+        --blue-hover: #0b5ed7;           /* Warna hover tombol */
+        --text-main: #0f172a;             /* Teks utama gelap pekat */
+        --text-slate: #64748b;            /* Teks label / muted */
     }
 
     body {
-        background-color: var(--bg-dark-navy) !important;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: var(--text-light-slate);
+        background-color: var(--bg-body) !important;
+        font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        color: var(--text-main) !important;
     }
 
-    /* Header Banner Cyberspace Style */
+    /* ==========================================================
+       2. HEADER BANNER (ROYAL BLUE GRADIENT)
+    ========================================================== */
     .banner-green-gradient {
-        background: linear-gradient(135deg, #020c1b 0%, var(--bg-slate-navy) 60%, var(--bg-light-navy) 100%) !important;
-        color: var(--white) !important;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(2, 12, 27, 0.8);
-        border: 1px solid var(--bg-light-navy);
+        background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
+        color: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 25px rgba(13, 110, 253, 0.15) !important;
+        border: none !important;
         position: relative;
         overflow: hidden;
+        padding: 1.75rem 2.25rem !important;
     }
 
-    /* Form Container Card */
+    .banner-green-gradient * {
+        color: #ffffff !important;
+    }
+
+    /* ==========================================================
+       3. FORM CONTAINER CARD (PUTIH BERSIH)
+    ========================================================== */
     .custom-card {
-        background-color: var(--bg-slate-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
+        background-color: var(--card-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
     }
 </style>
 

@@ -7,166 +7,236 @@
 @include('layouts.navbar')
 
 <style>
-    /* TEMA DARK NAVY UNTUK DETAIL PRODUK */
-    :root {
-        --dark-card-bg: #0f223d;
-        --dark-input-bg: #0b1727;
-        --dark-border: #1e3a5f;
-        --text-label: #cbd5e1;
-        --text-main: #ffffff;
-        --accent-green: #10b981;
-    }
+/* ==========================================================
+   1. GLOBAL VARIABLES & TEMA DETAIL PRODUK (ROYAL BLUE THEME)
+========================================================== */
+:root {
+    --bg-body: #f0f5ff;             /* Latar belakang utama (Biru Soft Segar) */
+    --dark-card-bg: #ffffff;        /* Card Utama (Putih Bersih) */
+    --dark-input-bg: #f8fafc;       /* Wrapper Foto/QR & Price Box (Light Soft) */
+    --dark-border: #cce0ff;         /* Border Soft Biru */
+    --text-label: #475569;          /* Label Keterangan (Abu-abu Tua) */
+    --text-main: #0a1c33;           /* Teks Utama/Nilai (Gelap Kontras) */
+    --accent-blue: #0d6efd;         /* Biru Royal Utama */
+    --accent-hover: #0b5ed7;        /* Biru Royal Hover */
+    --accent-green: #10b981;        /* Hijau untuk Harga Jual/Profit */
+}
 
-    /* BANNER HEADER */
-    .banner-navy-gradient {
-        background: linear-gradient(
-            135deg,
-            #0b1727 0%,
-            #0f223d 55%,
-            #1e3a5f 100%
-        ) !important;
-        color: #ffffff !important;
-        border: 1px solid var(--dark-border);
-    }
+body {
+    background-color: var(--bg-body) !important;
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-    /* CARD Utama */
+/* ==========================================================
+   2. BANNER HEADER DETAIL PRODUK
+========================================================== */
+.banner-navy-gradient {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 60%, #0a58ca 100%) !important;
+    color: #ffffff !important;
+    border-radius: 16px;
+    padding: 2rem 2.25rem;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.2);
+    border: none !important;
+}
+
+.banner-navy-gradient h1,
+.banner-navy-gradient h2,
+.banner-navy-gradient h3,
+.banner-navy-gradient h4 {
+    color: #ffffff !important;
+    font-weight: 800;
+}
+
+.banner-navy-gradient p,
+.banner-navy-gradient small,
+.banner-navy-gradient span {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   3. CARD UTAMA & WRAPPER GAMBAR / QR
+========================================================== */
+.product-card {
+    background-color: var(--dark-card-bg) !important;
+    border-radius: 16px;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.06);
+    overflow: hidden;
+}
+
+/* Wrapper Foto Produk */
+.product-img-wrapper {
+    background-color: var(--dark-input-bg);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    border: 1px solid var(--dark-border);
+}
+
+.product-img {
+    max-height: 220px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}
+
+/* QR Code Box */
+.qr-card-wrapper {
+    background-color: var(--dark-input-bg);
+    border-radius: 12px;
+    padding: 16px;
+    border: 2px dashed var(--dark-border);
+    text-align: center;
+}
+
+/* ==========================================================
+   4. LABELS, VALUES, & PRICE BOXES (FIX HARGA BELI & HARGA JUAL)
+========================================================== */
+.info-label {
+    font-size: 0.85rem;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    font-weight: 700 !important;
+    color: #0a1c33 !important;
+}
+
+/* --- PRICE BOX HARGA BELI (FIX KETERBACAAN) --- */
+.price-box {
+    background-color: #f1f5f9 !important;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #cbd5e1 !important;
+}
+
+.price-box .info-label,
+.price-box small,
+.price-box label {
+    color: #334155 !important;
+    font-weight: 700 !important;
+}
+
+.price-box .info-value,
+.price-box h2,
+.price-box h3,
+.price-box h4,
+.price-box span,
+.price-box p {
+    color: #0f172a !important; /* Hitam pekat tajam */
+    font-weight: 800 !important;
+}
+
+/* --- PRICE BOX HARGA JUAL --- */
+.price-box-sell {
+    background-color: rgba(16, 185, 129, 0.12) !important;
+    border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+.price-box-sell .info-label,
+.price-box-sell small,
+.price-box-sell label {
+    color: #047857 !important;
+    font-weight: 700 !important;
+}
+
+.price-box-sell .info-value,
+.price-box-sell h2,
+.price-box-sell h3,
+.price-box-sell h4,
+.price-box-sell span,
+.price-box-sell p {
+    color: #059669 !important;
+    font-weight: 800 !important;
+}
+
+/* ==========================================================
+   5. BUTTONS (TOMBOL AKSI & KEMBALI)
+========================================================== */
+.btn-gradient-green,
+.btn-primary-custom {
+    background: var(--accent-blue) !important;
+    border: none !important;
+    color: #ffffff !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.btn-gradient-green:hover,
+.btn-primary-custom:hover {
+    background: var(--accent-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.4);
+    color: #ffffff !important;
+}
+
+a.btn-soft-secondary {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    color: var(--accent-blue) !important;
+    border: 1px solid rgba(13, 110, 253, 0.25) !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.btn-soft-secondary:hover {
+    background-color: var(--accent-blue) !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================================
+   6. MODE PRINT / CETAK LABEL BARCODE
+========================================================== */
+@media print {
+    .no-print, nav, .navbar, .sidebar-custom {
+        display: none !important;
+    }
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
     .product-card {
-        background-color: var(--dark-card-bg) !important;
-        border-radius: 16px;
-        border: 1px solid var(--dark-border) !important;
-        overflow: hidden;
-    }
-
-    /* WAPPER FOTO PRODUK */
-    .product-img-wrapper {
-        background-color: var(--dark-input-bg);
-        border-radius: 12px;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 250px;
-        border: 1px solid var(--dark-border);
-    }
-
-    .product-img {
-        max-height: 220px;
-        width: auto;
-        object-fit: contain;
-        transition: transform 0.3s ease;
-    }
-
-    .product-img:hover {
-        transform: scale(1.05);
-    }
-
-    /* QR CODE BOX */
-    .qr-card-wrapper {
-        background-color: var(--dark-input-bg);
-        border-radius: 12px;
-        padding: 16px;
-        border: 2px dashed var(--dark-border);
-        text-align: center;
-    }
-
-    /* LABELS & VALUES */
-    .info-label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #94a3b8;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .info-value {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-main);
-    }
-
-    /* PRICE BOXES */
-    .price-box {
-        background-color: var(--dark-input-bg);
-        border-radius: 12px;
-        padding: 16px;
-        border: 1px solid var(--dark-border);
-    }
-
-    .price-box-sell {
-        background-color: #064e3b !important;
-        border-color: #059669 !important;
-    }
-
-    /* BUTTONS */
-    .btn-gradient-green {
-        background: linear-gradient(
-            135deg,
-            #059669 0%,
-            #10b981 100%
-        ) !important;
+        background: #ffffff !important;
         border: none !important;
-        color: white !important;
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        box-shadow: none !important;
     }
-
-    .btn-gradient-green:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-        color: white !important;
+    .banner-navy-gradient {
+        background: none !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        border-bottom: 2px solid #000;
+        border-radius: 0 !important;
     }
-
-    a.btn-soft-secondary {
-        background-color: #1e293b !important;
-        color: #cbd5e1 !important;
-        border: 1px solid var(--dark-border) !important;
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.2s ease;
-        text-decoration: none;
+    .banner-navy-gradient * {
+        color: #000000 !important;
     }
-
-    a.btn-soft-secondary:hover {
-        background-color: #334155 !important;
-        color: #ffffff !important;
+    .info-label, .info-value, h2, h3, h4 {
+        color: #000000 !important;
     }
-
-    /* CSS Khusus Mode Cetak / Print Label */
-    @media print {
-        .no-print, nav, .navbar {
-            display: none !important;
-        }
-        body {
-            background: #ffffff !important;
-            color: #000000 !important;
-        }
-        .product-card {
-            background: #ffffff !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-        .banner-navy-gradient {
-            background: none !important;
-            color: #000000 !important;
-            padding: 0 !important;
-            border-bottom: 2px solid #000;
-            border-radius: 0 !important;
-        }
-        .banner-navy-gradient * {
-            color: #000000 !important;
-        }
-        .info-label, .info-value, h2 {
-            color: #000000 !important;
-        }
-        .price-box {
-            background: #f8fafc !important;
-            border: 1px solid #000 !important;
-        }
+    .price-box, .price-box-sell {
+        background: #ffffff !important;
+        border: 1px solid #000000 !important;
     }
+}
 </style>
 
 <div class="container py-4">

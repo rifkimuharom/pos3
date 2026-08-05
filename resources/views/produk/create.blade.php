@@ -7,66 +7,113 @@
 @include('layouts.navbar')
 
 <style>
-    /* Styling tema Dark Navy Blue selaras dengan Dashboard & Users */
-    .banner-dark-theme {
-        background: linear-gradient(135deg, #0b1727 0%, #0f2a4a 100%) !important;
-        border: 1px solid #1e3a5f;
+    /* Global Color Palette (Light Theme Ultra Clean) */
+    :root {
+        --bg-body: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #cbd5e1;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --accent-primary: #0d6efd;
     }
 
-    .card-dark-theme {
-        background-color: #0b1727 !important;
-        border: 1px solid #1e3a5f !important;
-        color: #f8fafc !important;
+    body {
+        background-color: var(--bg-body) !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text-primary) !important;
     }
 
-    /* Style untuk form control agar teksnya terlihat jelas di mode dark */
-    .card-dark-theme label {
-        color: #94a3b8 !important; /* Warna abu terang untuk label */
-        font-weight: 500;
+    /* Header Banner Light */
+    .banner-light {
+        background: #ffffff !important;
+        color: var(--text-primary) !important;
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
     }
 
-    .card-dark-theme .form-control,
-    .card-dark-theme .form-select {
-        background-color: #0f223d !important;
-        border: 1px solid #1e3a5f !important;
-        color: #ffffff !important; /* Teks putih jelas */
+    /* Card Light */
+    .custom-card {
+        background-color: var(--card-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px;
+        color: var(--text-primary) !important;
     }
 
-    .card-dark-theme .form-control:focus,
-    .card-dark-theme .form-select:focus {
-        background-color: #132a4b !important;
-        border-color: #38bdf8 !important;
+    .custom-card label {
+        color: var(--text-primary) !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    /* Input & Form Control Terang */
+    .custom-card .form-control,
+    .custom-card .form-select,
+    .custom-card textarea {
+        background-color: #ffffff !important;
+        border: 1px solid var(--border-color) !important;
+        color: var(--text-primary) !important;
+        border-radius: 10px !important;
+        padding: 0.65rem 0.9rem !important;
+        cursor: pointer !important; /* Memastikan kursor mengidentifikasi dropdown */
+    }
+
+    .custom-card .form-control:focus,
+    .custom-card .form-select:focus,
+    .custom-card textarea:focus {
+        background-color: #ffffff !important;
+        border-color: var(--accent-primary) !important;
+        color: var(--text-primary) !important;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15) !important;
+    }
+
+    .custom-card .form-control::placeholder {
+        color: #94a3b8 !important;
+    }
+
+    /* Styling tombol di dalam form */
+    .custom-card .btn-primary {
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
         color: #ffffff !important;
-        box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
     }
 
-    .card-dark-theme .form-control::placeholder {
-        color: #64748b !important;
-    }
-
-    /* Memastikan opsi dropdown pilihan jenis/kategori produk terlihat jelas */
-    .card-dark-theme select option {
-        background-color: #0f223d !important;
-        color: #ffffff !important;
+    .custom-card .btn-secondary,
+    .custom-card .btn-outline-secondary {
+        background-color: #e2e8f0 !important;
+        border-color: #cbd5e1 !important;
+        color: #334155 !important;
     }
 </style>
 
 <div class="container py-4">
 
     {{-- HEADER BANNER --}}
-    <div class="banner-dark-theme p-4 rounded-4 mb-4 shadow-sm">
-        <h2 class="fw-bold mb-1 text-white d-flex align-items-center gap-2">
-            <i class="bi bi-box-seam-fill fs-2 text-info"></i> Tambah Produk Baru
-        </h2>
-        <p class="text-slate-300 opacity-75 small mb-0" style="color: #94a3b8;">Isi formulir di bawah ini untuk menambahkan barang baru ke inventaris toko.</p>
+    <div class="banner-light p-4 rounded-4 mb-4 shadow-sm">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div>
+                <h2 class="fw-bold mb-1 text-dark d-flex align-items-center gap-2">
+                    <i class="bi bi-plus-circle-fill text-primary fs-2"></i> Tambah Produk Baru
+                </h2>
+                <p class="small mb-0 text-secondary">Isi formulir di bawah ini untuk menambahkan barang baru ke inventaris toko.</p>
+            </div>
+            <div>
+                <a href="{{ route('produk.index') }}" class="btn btn-outline-secondary rounded-pill px-4 shadow-sm fw-semibold d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Kembali</span>
+                </a>
+            </div>
+        </div>
     </div>
 
     {{-- FORM CARD --}}
-    <div class="card card-dark-theme border-0 shadow-lg rounded-4 overflow-hidden mb-4">
+    <div class="card custom-card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
         <div class="card-body p-4 p-md-5">
             <form action="{{ route('produk.store') }}"
                   method="POST"
                   enctype="multipart/form-data">
+                @csrf
                 @include('produk._form')
             </form>
         </div>

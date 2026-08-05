@@ -7,198 +7,192 @@
 @include('layouts.navbar')
 
 <style>
+    /* ==========================================================
+       1. GLOBAL VARIABLES & CORE THEME (KUDE POS ROYAL BLUE)
+    ========================================================== */
     :root {
-        --bg-dark-navy: #0a192f;
-        --bg-slate-navy: #112240;
-        --bg-light-navy: #233554;
-        --cyan-accent: #64ffda;
-        --text-slate: #8892b0;
-        --text-light-slate: #ccd6f6;
-        --white: #e6f1ff;
-        --danger: #ff6b6b;
+        --bg-body: #ebf3fe;            /* Latar belakang biru soft terang */
+        --card-bg: #ffffff;            /* Kartu utama putih */
+        --input-bg: #ffffff;           /* Form input putih */
+        --border-color: #cbd5e1;        /* Border halus */
+        --text-main: #0f172a;          /* Teks utama gelap pekat */
+        --text-muted: #475569;         /* Teks label/keterangan */
+        --blue-primary: #0d6efd;       /* Warna Royal Blue utama */
+        --blue-hover: #0b5ed7;         /* Warna saat tombol di-hover */
+        --danger: #ef4444;              /* Warna hapus/batal */
     }
 
     body {
-        background-color: var(--bg-dark-navy) !important;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: var(--text-light-slate);
+        background-color: var(--bg-body) !important;
+        font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        color: var(--text-main) !important;
     }
 
-    /* Header Banner Cyberspace Style */
+    /* ==========================================================
+       2. HEADER BANNER (KELOLA USERS)
+    ========================================================== */
     .banner-green-gradient {
-        background: linear-gradient(135deg, #020c1b 0%, var(--bg-slate-navy) 60%, var(--bg-light-navy) 100%) !important;
-        color: var(--white) !important;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(2, 12, 27, 0.8);
-        border: 1px solid var(--bg-light-navy);
-        position: relative;
-        overflow: hidden;
+        background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
+        color: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 25px rgba(13, 110, 253, 0.15) !important;
+        border: none !important;
+        padding: 1.75rem 2.25rem !important;
     }
 
-    /* Stat Cards */
+    /* ==========================================================
+       3. CARDS & STATISTIK (FIXED TEXT VISIBILITY)
+    ========================================================== */
     .stat-card {
-        border-radius: 16px;
-        background-color: var(--bg-slate-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background-color: var(--card-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
     }
 
-    .stat-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
-        border-color: rgba(100, 255, 218, 0.3) !important;
+    .stat-card-title {
+        color: #475569 !important;
+        font-weight: 700 !important;
+        font-size: 0.85rem !important;
     }
 
-    /* Main Container Card */
+    .stat-card-number {
+        color: #0f172a !important;
+        font-weight: 800 !important;
+        font-size: 1.6rem !important;
+        line-height: 1.2;
+    }
+
+    /* ==========================================================
+       4. TABEL & PERBAIKAN TEKS KASIR / PENGGUNA
+    ========================================================== */
     .custom-card {
-        background-color: var(--bg-slate-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
+        background-color: var(--card-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
     }
 
-    /* Avatar Styling */
-    .avatar-green {
-        background: var(--bg-light-navy) !important;
-        color: var(--cyan-accent) !important;
-        border: 1px solid rgba(100, 255, 218, 0.3);
-        font-weight: 700;
-        font-size: 0.95rem;
-    }
-
-    .avatar-img-table {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--cyan-accent);
-        box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
-    }
-
-    /* Badges Style */
-    .badge-role-admin {
-        background: rgba(56, 189, 248, 0.15) !important;
-        color: #38bdf8 !important;
-        border: 1px solid rgba(56, 189, 248, 0.3) !important;
-    }
-
-    .badge-role-kasir {
-        background: rgba(100, 255, 218, 0.15) !important;
-        color: var(--cyan-accent) !important;
-        border: 1px solid rgba(100, 255, 218, 0.3) !important;
-    }
-
-    .badge-soft-emerald {
-        background: rgba(100, 255, 218, 0.1) !important;
-        color: var(--cyan-accent) !important;
-        border: 1px solid rgba(100, 255, 218, 0.2) !important;
-    }
-
-    /* Table Styling */
     .bg-table-head {
-        background-color: var(--bg-dark-navy) !important;
+        background-color: #f8fafc !important;
     }
 
-    .table-head-text {
-        color: var(--text-slate) !important;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+    .table-head-text,
+    .table th {
+        color: var(--blue-primary) !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        font-size: 0.75rem !important;
+    }
+
+    .custom-table {
+        background-color: #ffffff !important;
+        color: var(--text-main) !important;
+    }
+
+    .custom-table td {
+        color: #0f172a !important;
+        font-weight: 600 !important;
+        vertical-align: middle;
     }
 
     .user-name-text {
-        color: var(--white) !important;
-        font-weight: 600;
-        transition: color 0.15s ease;
+        color: #0f172a !important;
+        font-weight: 700 !important;
     }
 
     .custom-table tbody tr {
-        border-bottom: 1px solid var(--bg-light-navy) !important;
+        border-bottom: 1px solid #f1f5f9 !important;
         transition: background-color 0.15s ease;
-        animation: fadeInUp 0.35s ease-in-out forwards;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .custom-table tbody tr:hover {
-        background-color: var(--bg-light-navy) !important;
+        background-color: #f1f7ff !important;
     }
 
-    .custom-table tbody tr:hover .user-name-text {
-        color: var(--cyan-accent) !important;
+    /* Badges */
+    .badge-role-admin {
+        background-color: #e0f2fe !important;
+        color: #0284c7 !important;
+        border: 1px solid #bae6fd !important;
     }
 
-    /* Search & Filters Box */
-    .bg-search {
-        background-color: var(--bg-dark-navy) !important;
-        border-color: var(--bg-light-navy) !important;
-        color: var(--white) !important;
-        transition: all 0.2s ease;
+    .badge-role-kasir {
+        background-color: #fce7f3 !important;
+        color: #db2777 !important;
+        border: 1px solid #fbcfe8 !important;
     }
 
-    .bg-search::placeholder {
-        color: var(--text-slate) !important;
+    .badge-soft-emerald {
+        background-color: #dcfce7 !important;
+        color: #15803d !important;
+        border: 1px solid #bbf7d0 !important;
     }
 
-    .search-box:focus-within .bg-search {
-        background-color: var(--bg-dark-navy) !important;
-        border-color: var(--cyan-accent) !important;
-        box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.15) !important;
-    }
-
-    /* Action Buttons */
-    .btn-cyan-accent {
-        background: var(--cyan-accent) !important;
-        color: #0a192f !important;
+    /* Avatar Initial */
+    .avatar-green {
+        background-color: #e0f2fe !important;
+        color: #0d6efd !important;
         font-weight: 700;
+    }
+
+    /* ==========================================================
+       5. INPUT & SEARCH BOX
+    ========================================================== */
+    .bg-search {
+        background-color: var(--input-bg) !important;
+        border: 1px solid #cbd5e1 !important;
+        color: var(--text-main) !important;
+        font-weight: 600 !important;
+    }
+
+    .bg-search:focus {
+        border-color: var(--blue-primary) !important;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15) !important;
+    }
+
+    /* ==========================================================
+       6. BUTTONS (TOMBOL UTAMA & AKSI)
+    ========================================================== */
+    .btn-cyan-accent {
+        background: #0a192f !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
         border: none !important;
-        box-shadow: 0 4px 15px rgba(100, 255, 218, 0.25);
-        transition: all 0.2s ease;
+        border-radius: 50rem !important;
+        box-shadow: 0 4px 12px rgba(10, 25, 47, 0.2) !important;
+        transition: all 0.2s ease !important;
     }
 
     .btn-cyan-accent:hover {
-        background: #52e0c4 !important;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+        background: #020c1b !important;
+        color: #ffffff !important;
+        transform: translateY(-1px);
     }
 
     .btn-edit-soft {
-        background: rgba(100, 255, 218, 0.15) !important;
-        color: var(--cyan-accent) !important;
-        border: 1px solid rgba(100, 255, 218, 0.3) !important;
-        transition: all .2s ease;
+        background: rgba(13, 110, 253, 0.1) !important;
+        color: var(--blue-primary) !important;
+        border: 1px solid rgba(13, 110, 253, 0.2) !important;
+        border-radius: 8px;
     }
 
     .btn-edit-soft:hover {
-        background: var(--cyan-accent) !important;
-        color: #0a192f !important;
-        transform: scale(1.08);
+        background: var(--blue-primary) !important;
+        color: #ffffff !important;
     }
 
     .btn-delete-soft {
-        background-color: rgba(255, 107, 107, 0.15) !important;
+        background-color: rgba(239, 68, 68, 0.1) !important;
         color: var(--danger) !important;
-        border: 1px solid rgba(255, 107, 107, 0.3) !important;
-        transition: all 0.2s ease;
+        border: 1px solid rgba(239, 68, 68, 0.2) !important;
+        border-radius: 8px;
     }
 
     .btn-delete-soft:hover {
         background-color: var(--danger) !important;
         color: #ffffff !important;
-        transform: scale(1.08);
-    }
-
-    /* Modal Dark Theme */
-    .modal-content-dark {
-        background-color: var(--bg-slate-navy) !important;
-        border: 1px solid var(--bg-light-navy) !important;
-        color: var(--white) !important;
     }
 </style>
 
@@ -209,24 +203,24 @@
         <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 position-relative" style="z-index: 1;">
             <div>
                 <h2 class="fw-bold mb-1 text-white d-flex align-items-center gap-2">
-                    <i class="bi bi-people-fill fs-2" style="color: var(--cyan-accent)"></i> Kelola Users
+                    <i class="bi bi-people-fill fs-2"></i> Kelola Users
                 </h2>
-                <p class="small mb-0" style="color: var(--text-slate)">Atur hak akses, kredensial, dan kelola daftar pengguna sistem POS Anda.</p>
+                <p class="small mb-0 text-white opacity-90">Atur hak akses, kredensial, dan kelola daftar pengguna sistem POS Anda.</p>
             </div>
             <div class="d-flex flex-wrap gap-2">
-                <button onclick="window.print()" class="btn btn-outline-light rounded-pill px-3 shadow-sm fw-semibold d-inline-flex align-items-center gap-2" style="border-color: var(--bg-light-navy);">
-                    <i class="bi bi-printer-fill" style="color: var(--cyan-accent)"></i>
+                <button onclick="window.print()" class="btn btn-light text-primary rounded-pill px-3 shadow-sm fw-bold border-0 d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-printer-fill"></i>
                     <span>Cetak Data</span>
                 </button>
 
-                <a href="{{ route('admin.users.create') }}" class="btn btn-cyan-accent rounded-pill px-4 shadow-sm d-inline-flex align-items-center gap-2">
+                <a href="{{ route('admin.users.create') }}" class="btn btn-cyan-accent px-4 shadow-sm d-inline-flex align-items-center gap-2">
                     <i class="bi bi-person-plus-fill"></i>
                     <span>Tambah User</span>
                 </a>
             </div>
         </div>
         <div class="position-absolute end-0 bottom-0 opacity-25 pe-4 pb-2 d-none d-md-block">
-            <i class="bi bi-shield-check" style="font-size: 5rem; color: var(--cyan-accent)"></i>
+            <i class="bi bi-shield-check text-white" style="font-size: 5rem;"></i>
         </div>
     </div>
 
@@ -235,51 +229,54 @@
         <div class="col-6 col-md-3">
             <div class="card stat-card p-3 shadow-sm">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: rgba(100, 255, 218, 0.1); color: var(--cyan-accent); width: 48px; height: 48px;">
+                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: #e0f2fe; color: #0d6efd; width: 48px; height: 48px;">
                         <i class="bi bi-people fs-4"></i>
                     </div>
                     <div>
-                        <span class="small d-block" style="color: var(--text-slate)">Total User</span>
-                        <h5 class="fw-bold mb-0 text-white">{{ method_exists($users, 'total') ? $users->total() : count($users) }}</h5>
+                        <span class="stat-card-title d-block">Total User</span>
+                        <h5 class="stat-card-number mb-0">{{ method_exists($users, 'total') ? $users->total() : count($users) }}</h5>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="card stat-card p-3 shadow-sm">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; width: 48px; height: 48px;">
+                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: #e0f2fe; color: #0d6efd; width: 48px; height: 48px;">
                         <i class="bi bi-shield-lock fs-4"></i>
                     </div>
                     <div>
-                        <span class="small d-block" style="color: var(--text-slate)">Administrator</span>
-                        <h5 class="fw-bold mb-0 text-white">{{ $users->filter(fn($u) => strtolower(is_object($u->role) ? $u->role->name : $u->role ?? '') == 'admin')->count() }}</h5>
+                        <span class="stat-card-title d-block">Administrator</span>
+                        <h5 class="stat-card-number mb-0">{{ $users->filter(fn($u) => strtolower(is_object($u->role) ? $u->role->name : $u->role ?? '') == 'admin')->count() }}</h5>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="card stat-card p-3 shadow-sm">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: rgba(244, 114, 182, 0.1); color: #f472b6; width: 48px; height: 48px;">
+                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: #fce7f3; color: #db2777; width: 48px; height: 48px;">
                         <i class="bi bi-person-badge fs-4"></i>
                     </div>
                     <div>
-                        <span class="small d-block" style="color: var(--text-slate)">Petugas Kasir</span>
-                        <h5 class="fw-bold mb-0 text-white">{{ $users->filter(fn($u) => strtolower(is_object($u->role) ? $u->role->name : $u->role ?? '') != 'admin')->count() }}</h5>
+                        <span class="stat-card-title d-block">Petugas Kasir</span>
+                        <h5 class="stat-card-number mb-0" style="color: #db2777 !important;">{{ $users->filter(fn($u) => strtolower(is_object($u->role) ? $u->role->name : $u->role ?? '') != 'admin')->count() }}</h5>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="card stat-card p-3 shadow-sm">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: rgba(100, 255, 218, 0.1); color: var(--cyan-accent); width: 48px; height: 48px;">
+                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: #dcfce7; color: #16a34a; width: 48px; height: 48px;">
                         <i class="bi bi-check-circle fs-4"></i>
                     </div>
                     <div>
-                        <span class="small d-block" style="color: var(--text-slate)">Status Sistem</span>
-                        <h5 class="fw-bold mb-0" style="color: var(--cyan-accent); font-size: 0.95rem;">Aktif Normal</h5>
+                        <span class="stat-card-title d-block">Status Sistem</span>
+                        <h5 class="fw-bold mb-0" style="color: #16a34a !important; font-size: 1rem;">Aktif Normal</h5>
                     </div>
                 </div>
             </div>
@@ -296,8 +293,8 @@
 
                     <div class="col-md-5 col-lg-4">
                         <div class="input-group search-box">
-                            <span class="input-group-text border-end-0 rounded-start-pill ps-3 bg-search">
-                                <i class="bi bi-search" style="color: var(--cyan-accent);"></i>
+                            <span class="input-group-text border-end-0 rounded-start-pill ps-3 bg-search text-muted">
+                                <i class="bi bi-search"></i>
                             </span>
                             <input
                                 type="text"
@@ -318,7 +315,7 @@
                         </select>
 
                         @if(request('search') || request('role'))
-                            <a href="{{ route('admin.users') }}" class="btn btn-sm btn-outline-light rounded-pill px-3 border-0" style="color: var(--text-slate)">
+                            <a href="{{ route('admin.users') }}" class="btn btn-sm btn-light border rounded-pill px-3 text-secondary">
                                 <i class="bi bi-x-circle me-1"></i>Reset
                             </a>
                         @endif
@@ -348,31 +345,30 @@
                             $roleName = is_object($user->role) ? ($user->role->name ?? 'User') : ($user->role ?? 'User');
                         @endphp
                         <tr>
-                            <td class="ps-4 small fw-medium" style="color: var(--text-slate)">
+                            <td class="ps-4 small fw-semibold text-muted">
                                 {{ method_exists($users, 'firstItem') ? $users->firstItem() + $loop->index : $loop->iteration }}
                             </td>
                             <td>
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="avatar-green rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width:40px;height:40px;">
                                         @if(isset($user->photo) && $user->photo)
-                                            <img src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}" class="avatar-img-table">
+                                            <img src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}" class="avatar-img-table rounded-circle" style="width:100%;height:100%;object-fit:cover;">
                                         @else
                                             {{ strtoupper(substr($user->name, 0, 1)) }}
                                         @endif
                                     </div>
                                     <div>
                                         <span class="user-name-text d-block">{{ $user->name }}</span>
-                                        <span class="small" style="color: var(--text-slate)">ID User: #{{ $user->id }}</span>
+                                        <span class="small text-muted">ID User: #{{ $user->id }}</span>
                                     </div>
                                 </div>
                             </td>
-                            <td class="small fw-medium" style="color: var(--text-light-slate)">
+                            <td class="small fw-semibold text-dark">
                                 <div class="d-flex align-items-center gap-1">
-                                    <i class="bi bi-envelope me-1" style="color: var(--text-slate)"></i>
+                                    <i class="bi bi-envelope text-muted me-1"></i>
                                     <span>{{ $user->email }}</span>
                                     <button type="button"
-                                            class="btn btn-sm btn-link p-0 ms-1 border-0"
-                                            style="color: var(--text-slate)"
+                                            class="btn btn-sm btn-link p-0 ms-1 border-0 text-muted"
                                             onclick="copyToClipboard('{{ $user->email }}', this)"
                                             title="Salin Email">
                                         <i class="bi bi-clipboard fs-6"></i>
@@ -392,7 +388,7 @@
                             </td>
                             <td>
                                 <span class="badge badge-soft-emerald px-2.5 py-1 rounded-pill fw-semibold small">
-                                    <i class="bi bi-dot"></i> Aktif
+                                    • Aktif
                                 </span>
                             </td>
                             <td class="pe-4 text-end">
@@ -413,8 +409,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center py-5" style="color: var(--text-slate)">
-                                <i class="bi bi-people fs-1 d-block mb-2"></i>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-people fs-1 d-block mb-2 opacity-50"></i>
                                 <span>Tidak ada data user yang ditemukan.</span>
                             </td>
                         </tr>
@@ -426,9 +422,9 @@
 
         {{-- PAGINATION FOOTER --}}
         @if(method_exists($users, 'hasPages') && $users->hasPages())
-            <div class="card-footer border-0 px-4 py-3 border-top" style="background-color: transparent; border-color: var(--bg-light-navy) !important;">
+            <div class="card-footer border-0 px-4 py-3 border-top" style="background-color: transparent;">
                 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
-                    <span class="small" style="color: var(--text-slate)">
+                    <span class="small text-muted">
                         Menampilkan {{ $users->firstItem() }} - {{ $users->lastItem() }} dari {{ $users->total() }} user
                     </span>
                     <div>
@@ -445,16 +441,16 @@
 {{-- MODAL GLOBAL KONFIRMASI HAPUS --}}
 <div class="modal fade" id="globalDeleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content modal-content-dark border-0 shadow-lg rounded-4 overflow-hidden text-center p-3">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden text-center p-3" style="background-color: #ffffff;">
             <div class="modal-body p-3">
                 <div class="rounded-circle bg-danger bg-opacity-10 text-danger mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                     <i class="bi bi-exclamation-triangle-fill fs-2"></i>
                 </div>
-                <h5 class="fw-bold mb-1 text-white">Hapus User?</h5>
-                <p class="small mb-0" style="color: var(--text-slate)">Apakah Anda yakin ingin menghapus user <strong id="deleteUserNameText" class="text-white"></strong>? Data ini tidak bisa dikembalikan.</p>
+                <h5 class="fw-bold mb-1 text-dark">Hapus User?</h5>
+                <p class="small text-muted mb-0">Apakah Anda yakin ingin menghapus user <strong id="deleteUserNameText" class="text-dark"></strong>? Data ini tidak bisa dikembalikan.</p>
             </div>
             <div class="d-flex gap-2 justify-content-center px-3 pb-2">
-                <button type="button" class="btn btn-outline-light rounded-pill px-3 fw-semibold w-50" style="border-color: var(--bg-light-navy)" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-light border rounded-pill px-3 fw-semibold w-50" data-bs-dismiss="modal">Batal</button>
                 <form id="globalDeleteForm" action="" method="POST" class="w-50">
                     @csrf
                     @method('DELETE')

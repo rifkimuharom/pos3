@@ -39,9 +39,9 @@
         color: #000000 !important;
     }
 
-    /* Warna Harga & Teks Pendukung */
+    /* Warna Harga & Teks Pendukung (Diubah ke Biru) */
     .pos-card-white .text-price {
-        color: #059669 !important;
+        color: #2563eb !important;
         font-weight: 700 !important;
     }
 
@@ -49,7 +49,7 @@
         color: #475569 !important;
     }
 
-    /* Style Input & Search Box */
+    /* Style Input & Search Box (Focus diubah ke Biru) */
     .input-pos-light {
         background-color: #f8fafc !important;
         border: 1px solid #94a3b8 !important;
@@ -58,16 +58,16 @@
     }
 
     .input-pos-light:focus {
-        border-color: #10b981 !important;
+        border-color: #2563eb !important;
         background-color: #ffffff !important;
-        box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.2) !important;
+        box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.2) !important;
     }
 
     .input-pos-light::placeholder {
         color: #64748b !important;
     }
 
-    /* Item Produk Box */
+    /* Item Produk Box (Hover diubah ke Biru) */
     .product-select-btn {
         background-color: #f1f5f9 !important;
         border: 1px solid #cbd5e1 !important;
@@ -75,37 +75,37 @@
     }
 
     .product-select-btn:hover {
-        border-color: #10b981 !important;
-        background-color: #ecfdf5 !important;
+        border-color: #2563eb !important;
+        background-color: #eff6ff !important;
     }
 
-    /* Box Total Belanja */
+    /* Box Total Belanja (Diubah ke Tema Biru) */
     .total-receipt-box-light {
-        background: #ecfdf5 !important;
-        border: 2px dashed #10b981 !important;
+        background: #eff6ff !important;
+        border: 2px dashed #2563eb !important;
         border-radius: 12px;
     }
 
-    /* Banner Header Atas */
+    /* Banner Header Atas (Diubah ke Gradient Biru) */
     .banner-dark-gradient {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
-        border: 1px solid #334155 !important;
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+        border: 1px solid #3b82f6 !important;
     }
 
     .banner-dark-gradient * {
         color: #ffffff !important;
     }
 
-    /* Tombol Utama */
+    /* Tombol Utama (Diubah ke Biru) */
     .btn-cyan {
-        background-color: #10b981 !important;
+        background-color: #2563eb !important;
         color: #ffffff !important;
         font-weight: 700 !important;
         border: none !important;
     }
 
     .btn-cyan:hover {
-        background-color: #059669 !important;
+        background-color: #1d4ed8 !important;
         color: #ffffff !important;
     }
 </style>

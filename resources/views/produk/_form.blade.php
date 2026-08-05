@@ -1,6 +1,6 @@
 @csrf
 @if ($errors->any())
-    <div class="alert alert-danger border-0 text-white bg-danger mb-4 rounded-3">
+    <div class="alert alert-danger border-0 text-white bg-danger mb-4 rounded-3 shadow-sm">
         <ul class="mb-0">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -10,219 +10,243 @@
 @endif
 
 <style>
-    /* VARIABLES & TEMA DARK NAVY */
-    :root {
-        --dark-card-bg: #0f223d;
-        --dark-input-bg: #0b1727;
-        --dark-border: #1e3a5f;
-        --text-label: #cbd5e1; /* Abu terang jelas */
-        --text-main: #ffffff;  /* Teks Putih Tegas */
-        --accent-green: #10b981;
-    }
+/* ==========================================================
+   1. GLOBAL VARIABLES & TEMA FORM PRODUK (ROYAL BLUE THEME)
+========================================================== */
+:root {
+    --bg-body: #f0f5ff;             /* Latar belakang utama (Biru Soft Segar) */
+    --light-card-bg: #ffffff;       /* Card Container (Putih Bersih) */
+    --light-input-bg: #f8fafc;      /* Input Field & File Upload (Light Soft) */
+    --light-border: #cce0ff;        /* Border Soft Biru */
+    --text-label: #0a1c33;          /* Label Teks (Gelap Kontras) */
+    --text-main: #0a1c33;           /* Teks Utama (Gelap Kontras) */
+    --accent-blue: #0d6efd;         /* Biru Royal Utama */
+    --accent-hover: #0b5ed7;        /* Biru Royal Hover */
+    --danger: #dc3545;            /* Warna Batal */
+}
 
-    /* CARD CONTAINER */
-    .form-card-section {
-        background-color: var(--dark-card-bg) !important;
-        border-radius: 16px;
-        border: 1px solid var(--dark-border) !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-    }
+body {
+    background-color: var(--bg-body) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-main);
+}
 
-    /* LABELS */
-    .form-label-custom {
-        font-weight: 600;
-        color: var(--text-label) !important;
-        font-size: 0.875rem;
-        margin-bottom: 0.4rem;
-        display: inline-block;
-    }
+/* ==========================================================
+   2. CARD CONTAINER & LABELS FORM
+========================================================== */
+.form-card-section,
+.custom-card {
+    background-color: var(--light-card-bg) !important;
+    border-radius: 16px;
+    border: 1px solid var(--light-border) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.06);
+    overflow: hidden;
+    padding: 1.5rem;
+}
 
-    /* INPUT GROUP & TEXT */
-    .input-group-custom .input-group-text {
-        background-color: #132a4b !important;
-        border-color: var(--dark-border) !important;
-        color: #94a3b8 !important;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        font-weight: 600;
-    }
+.form-label-custom,
+.form-label,
+label {
+    font-weight: 700 !important;
+    color: var(--text-label) !important;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    display: inline-block;
+}
 
-    /* INPUTS & SELECTS */
-    .form-control-custom,
-    select.form-control-custom {
-        background-color: var(--dark-input-bg) !important;
-        border-radius: 10px;
-        border: 1px solid var(--dark-border) !important;
-        padding: 0.65rem 0.9rem;
-        font-size: 0.9rem;
-        color: var(--text-main) !important; /* Teks yang diketik warna Putih Terang */
-        transition: all 0.2s ease-in-out;
-    }
+/* ==========================================================
+   3. INPUT GROUPS & FORM CONTROLS
+========================================================== */
+.input-group-custom .input-group-text,
+.input-group-text {
+    background-color: rgba(13, 110, 253, 0.08) !important;
+    border-color: var(--light-border) !important;
+    color: var(--accent-blue) !important;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-weight: 700 !important;
+}
 
-    .input-group-custom .form-control-custom {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+.form-control-custom,
+select.form-control-custom,
+.form-control,
+.form-select {
+    background-color: #ffffff !important;
+    border-radius: 10px;
+    border: 1px solid var(--light-border) !important;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    transition: all 0.2s ease-in-out;
+}
 
-    .form-control-custom:focus {
-        border-color: #38bdf8 !important;
-        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
-        color: #ffffff !important;
-    }
+.input-group-custom .form-control-custom {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
-    .form-control-custom::placeholder {
-        color: #64748b !important;
-    }
+.form-control-custom:focus,
+.form-control:focus,
+.form-select:focus {
+    background-color: #ffffff !important;
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15) !important;
+    color: var(--text-main) !important;
+}
 
-    /* DROPDOWN OPTIONS */
-    .form-control-custom option {
-        background-color: var(--dark-input-bg) !important;
-        color: #ffffff !important;
-    }
+/* ==========================================================
+   4. UPLOAD FOTO PRODUK AREA
+========================================================== */
+.file-upload-box {
+    border: 2px dashed var(--light-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: var(--light-input-bg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
 
-    /* UPLOAD FOTO AREA */
-    .file-upload-box {
-        border: 2px dashed var(--dark-border);
-        border-radius: 14px;
-        padding: 1.5rem;
-        text-align: center;
-        background-color: var(--dark-input-bg);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        position: relative;
-    }
+.file-upload-box:hover {
+    border-color: var(--accent-blue);
+    background-color: rgba(13, 110, 253, 0.05);
+}
 
-    .file-upload-box:hover {
-        border-color: var(--accent-green);
-        background-color: #0d2838;
-    }
+.file-upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
 
-    .file-upload-box input[type="file"] {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-    }
+/* ==========================================================
+   5. PERBAIKAN: KATEGORI / JENIS PRODUK CARD (KLIKABLE)
+========================================================== */
+.category-card {
+    position: relative;
+    display: block;
+    width: 100%;
+}
 
-    /* KATEGORI / JENIS PRODUK CARD FIX CLICK */
-    .category-card {
-        position: relative;
-        display: block;
-        width: 100%;
-    }
+.category-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
 
-    .category-card input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+.category-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid var(--light-border);
+    border-radius: 16px;
+    background: #ffffff;
+    transition: all .2s ease-in-out;
+    cursor: pointer !important;
+    user-select: none;
+}
 
-    .category-content {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding: 15px;
-        border: 2px solid var(--dark-border);
-        border-radius: 16px;
-        background: var(--dark-input-bg);
-        transition: all .3s ease;
-        cursor: pointer !important;
-        user-select: none;
-    }
+.category-content:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.12);
+}
 
-    /* Supaya elemen di dalam kartu tidak menghalangi event click */
-    .category-content * {
-        pointer-events: none;
-    }
+.category-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
 
-    .category-content:hover {
-        border-color: var(--accent-green);
-        transform: translateY(-2px);
-    }
+.category-text {
+    flex-grow: 1;
+}
 
-    .category-image {
-        width: 75px;
-        height: 75px;
-        object-fit: cover;
-        border-radius: 12px;
-        flex-shrink: 0;
-    }
+.category-text h5 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main) !important;
+}
 
-    .category-text h5 {
-        margin: 0;
-        font-size: 16px;
-        font-weight: 700;
-        color: #ffffff !important;
-    }
+.category-text small {
+    color: #64748b !important;
+    font-weight: 500;
+    display: block;
+}
 
-    .category-text small {
-        color: #94a3b8 !important;
-    }
+.check-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--light-border);
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
 
-    .check-circle {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        border: 2px solid var(--dark-border);
-    }
+/* Style Ketika Kategori Terpilih */
+.category-card input[type="radio"]:checked + .category-content {
+    border-color: var(--accent-blue) !important;
+    background: rgba(13, 110, 253, 0.08) !important;
+}
 
-    /* STYLE KETIKA SELECTED / CHECKED */
-    .category-card input[type="radio"]:checked + .category-content {
-        border-color: var(--accent-green);
-        background: #064e3b; /* Background hijau gelap saat terpilih */
-    }
+.category-card input[type="radio"]:checked + .category-content .check-circle {
+    background: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+    color: #ffffff !important;
+}
 
-    .category-card input[type="radio"]:checked + .category-content .check-circle {
-        background: var(--accent-green);
-        border-color: var(--accent-green);
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+/* ==========================================================
+   6. BUTTONS
+========================================================== */
+button.btn-gradient-submit {
+    background: var(--accent-blue) !important;
+    border: none !important;
+    color: #ffffff !important;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    transition: all 0.2s ease;
+}
 
-    /* BUTTONS */
-    button.btn-gradient-submit {
-        background: linear-gradient(135deg, #059669, #10b981);
-        border: none;
-        color: white;
-        padding: 0.7rem 1.8rem;
-        border-radius: 50px;
-        font-weight: 600;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
-        transition: all 0.2s ease;
-    }
+button.btn-gradient-submit:hover {
+    background: var(--accent-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.4);
+}
 
-    button.btn-gradient-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-        color: white;
-    }
+a.btn-soft-secondary {
+    background: rgba(220, 53, 69, 0.1) !important;
+    color: var(--danger) !important;
+    border: 1px solid rgba(220, 53, 69, 0.25) !important;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
 
-    a.btn-soft-secondary {
-        background: #1e293b;
-        color: #cbd5e1;
-        border: 1px solid var(--dark-border);
-        padding: 0.7rem 1.8rem;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.2s ease;
-        text-decoration: none;
-    }
-
-    a.btn-soft-secondary:hover {
-        background: #334155;
-        color: #ffffff;
-    }
+a.btn-soft-secondary:hover {
+    background: var(--danger) !important;
+    color: #ffffff !important;
+}
 </style>
 
 <div class="row g-4">
@@ -240,9 +264,9 @@
                        accept="image/*">
 
                 <div id="uploadPlaceholder">
-                    <i class="bi bi-cloud-arrow-up fs-1" style="color: var(--accent-green);"></i>
-                    <p class="mb-1 mt-2 fw-semibold text-white">Klik atau geser foto ke sini untuk mengunggah</p>
-                    <span class="small" style="color: #94a3b8;">Format: JPG, JPEG, PNG (Maks. 2MB)</span>
+                    <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
+                    <p class="mb-1 mt-2 fw-semibold text-dark">Klik atau geser foto ke sini untuk mengunggah</p>
+                    <span class="small text-muted">Format: JPG, JPEG, PNG (Maks. 2MB)</span>
                 </div>
 
                 {{-- PREVIEW FOTO --}}
@@ -252,8 +276,8 @@
                              src="{{ isset($produk) && $produk->foto ? asset('storage/' . $produk->foto) : '#' }}"
                              class="rounded-3 shadow-sm border"
                              style="width: 120px; height: 120px; object-fit: cover;">
-                        <span class="badge position-absolute bottom-0 start-50 translate-middle-x mb-1 px-2 py-1"
-                              style="font-size: 0.7rem; background: #064e3b; color: #34d399;">
+                        <span class="badge position-absolute bottom-0 start-50 translate-middle-x mb-1 px-2 py-1 bg-primary text-white"
+                              style="font-size: 0.7rem;">
                                 Preview
                         </span>
                     </div>
@@ -268,8 +292,7 @@
         </div>
     </div>
 
-
-    {{-- NAMA PRODUK --}}
+    {{-- NAMA PRODUK (Menggunakan name="name") --}}
     <div class="col-12">
         <div class="p-4 form-card-section">
             <label class="form-label-custom">
@@ -292,18 +315,27 @@
         </div>
     </div>
 
-
-    {{-- KATEGORI / JENIS PRODUK --}}
+    {{-- KATEGORI / JENIS PRODUK (Menggunakan name="category_id") --}}
     <div class="col-12">
         <div class="p-4 form-card-section">
-            <label class="form-label-custom">
+            <label class="form-label-custom mb-3">
                 Jenis Produk <span class="text-danger">*</span>
             </label>
 
             <div class="row g-3">
-                @foreach($categories as $category)
+                @php
+                    $categoriesList = isset($categories) && count($categories) > 0 ? $categories : collect([
+                        (object)['id' => 1, 'nama' => 'Makanan', 'deskripsi' => 'Aneka Makanan'],
+                        (object)['id' => 2, 'nama' => 'Minuman', 'deskripsi' => 'Aneka Minuman'],
+                        (object)['id' => 3, 'nama' => 'Snack', 'deskripsi' => 'Cemilan & Ringan'],
+                        (object)['id' => 4, 'nama' => 'Elektronik', 'deskripsi' => 'Perangkat & Aksesori']
+                    ]);
+                @endphp
+
+                @foreach($categoriesList as $category)
                     @php
-                        $foto = match(strtolower($category->nama)) {
+                        $slug = strtolower($category->nama);
+                        $foto = match($slug) {
                             'makanan' => 'makanan.jpg',
                             'minuman' => 'minuman.jpg',
                             'snack' => 'snack.jpg',
@@ -321,12 +353,14 @@
                                 id="{{ $catId }}"
                                 value="{{ $category->id }}"
                                 {{ old('category_id', $produk->category_id ?? '') == $category->id ? 'checked' : '' }}
+                                required
                             >
 
                             <label for="{{ $catId }}" class="category-content w-100">
                                 <img
                                     src="{{ asset('images/categories/'.$foto) }}"
-                                    class="category-image"
+                                    onerror="this.onerror=null; this.src='https://via.placeholder.com/60?text=POS';"
+                                    class="category-image border"
                                 >
 
                                 <div class="category-text">
@@ -335,7 +369,7 @@
                                 </div>
 
                                 <span class="check-circle">
-                                    <i class="bi bi-check"></i>
+                                    <i class="bi bi-check-lg"></i>
                                 </span>
                             </label>
                         </div>
@@ -351,8 +385,7 @@
         </div>
     </div>
 
-
-    {{-- HARGA BELI & HARGA JUAL --}}
+    {{-- HARGA BELI & HARGA JUAL (purchase_price & selling_price) --}}
     <div class="col-md-6">
         <div class="p-4 form-card-section h-100">
             <label class="form-label-custom">
@@ -394,8 +427,7 @@
                        required>
             </div>
 
-            {{-- ESTIMASI MARGIN KEUNTUNGAN --}}
-            <div id="marginInfo" class="small fw-semibold mt-2" style="color: #94a3b8;">
+            <div id="marginInfo" class="small fw-semibold mt-2 text-muted">
                 Estimasi Profit: <span id="marginValue" class="text-success">Rp 0</span>
             </div>
 
@@ -407,8 +439,7 @@
         </div>
     </div>
 
-
-    {{-- STOK --}}
+    {{-- STOK (Menggunakan name="stock") --}}
     <div class="col-12">
         <div class="p-4 form-card-section">
             <label class="form-label-custom">
@@ -420,18 +451,22 @@
 
                 <input type="number"
                        name="stock"
-                       class="form-control form-control-custom"
+                       class="form-control form-control-custom @error('stock') is-invalid @enderror"
                        placeholder="0"
                        value="{{ old('stock', $produk->stok ?? '') }}"
                        required>
 
-                <span class="input-group-text border-start-0" style="background-color: #132a4b !important; color: #94a3b8 !important;">
+                <span class="input-group-text border-start-0" style="background-color: #f1f5f9 !important; color: #64748b !important;">
                     Unit
                 </span>
             </div>
+            @error('stock')
+                <div class="text-danger small mt-1">
+                    <i class="bi bi-exclamation-circle me-1"></i> {{ $message }}
+                </div>
+            @enderror
         </div>
     </div>
-
 
     {{-- SATUAN --}}
     <div class="col-md-6">
@@ -440,18 +475,22 @@
                 Satuan <span class="text-danger">*</span>
             </label>
 
-            <select name="satuan" class="form-control form-control-custom" required>
+            <select name="satuan" class="form-control form-control-custom @error('satuan') is-invalid @enderror" required>
                 <option value="">Pilih Satuan</option>
-                <option value="pcs" {{ old('satuan',$produk->satuan ?? '')=='pcs'?'selected':'' }}>PCS</option>
-                <option value="kg" {{ old('satuan',$produk->satuan ?? '')=='kg'?'selected':'' }}>Kg</option>
-                <option value="gram" {{ old('satuan',$produk->satuan ?? '')=='gram'?'selected':'' }}>Gram</option>
-                <option value="liter" {{ old('satuan',$produk->satuan ?? '')=='liter'?'selected':'' }}>Liter</option>
-                <option value="botol" {{ old('satuan',$produk->satuan ?? '')=='botol'?'selected':'' }}>Botol</option>
-                <option value="pack" {{ old('satuan',$produk->satuan ?? '')=='pack'?'selected':'' }}>Pack</option>
+                <option value="pcs" {{ old('satuan', $produk->satuan ?? '') == 'pcs' ? 'selected' : '' }}>PCS</option>
+                <option value="kg" {{ old('satuan', $produk->satuan ?? '') == 'kg' ? 'selected' : '' }}>Kg</option>
+                <option value="gram" {{ old('satuan', $produk->satuan ?? '') == 'gram' ? 'selected' : '' }}>Gram</option>
+                <option value="liter" {{ old('satuan', $produk->satuan ?? '') == 'liter' ? 'selected' : '' }}>Liter</option>
+                <option value="botol" {{ old('satuan', $produk->satuan ?? '') == 'botol' ? 'selected' : '' }}>Botol</option>
+                <option value="pack" {{ old('satuan', $produk->satuan ?? '') == 'pack' ? 'selected' : '' }}>Pack</option>
             </select>
+            @error('satuan')
+                <div class="text-danger small mt-1">
+                    <i class="bi bi-exclamation-circle me-1"></i> {{ $message }}
+                </div>
+            @enderror
         </div>
     </div>
-
 
     {{-- MINIMUM STOK --}}
     <div class="col-md-6">
@@ -466,7 +505,6 @@
                    value="{{ old('minimum_stok', $produk->minimum_stok ?? 0) }}">
         </div>
     </div>
-
 
     {{-- DESKRIPSI --}}
     <div class="col-12">
@@ -497,8 +535,7 @@
     </a>
 </div>
 
-
-{{-- JAVASCRIPT PREVIEW & CALCULATOR MARGIN --}}
+{{-- JAVASCRIPT --}}
 <script>
     function previewImage(input) {
         const preview = document.getElementById('preview');

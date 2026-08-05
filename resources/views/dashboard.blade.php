@@ -5,36 +5,36 @@
 @section('content')
 
 <style>
-    /* CSS VARIABLES: DEFAULT DARK MODE (CYBERSPACE THEME) */
+    /* CSS VARIABLES: ROYAL BLUE THEME */
     :root {
-        --bg-main: #0a192f;
-        --bg-card: #112240;
-        --bg-card-sub: #233554;
-        --bg-banner: linear-gradient(135deg, #020c1b 0%, #112240 60%, #233554 100%);
-        --cyan-accent: #64ffda;
-        --cyan-hover: #4cd8b2;
-        --text-primary: #ccd6f6;
-        --text-heading: #e6f1ff;
-        --text-muted: #8892b0;
-        --border-color: #233554;
-        --table-hover: rgba(100, 255, 218, 0.05);
-        --shadow-color: rgba(2, 12, 27, 0.5);
+        --bg-main: #f0f5ff;             /* Latar belakang utama (Biru Sangat Muda & Segar) */
+        --bg-card: #ffffff;             /* Kartu Utama (Putih Bersih agar Kontras) */
+        --bg-card-sub: #e6f0ff;         /* Latar Sub-card / Header Tabel (Biru Soft) */
+        --bg-banner: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 50%, #0a58ca 100%); /* Banner Biru Royal */
+        --cyan-accent: #0d6efd;         /* Aksentuasi Utama (Biru Royal) */
+        --cyan-hover: #0b5ed7;          /* Biru Hover */
+        --text-primary: #1f3a60;        /* Teks Isian (Biru Gelap Teks) */
+        --text-heading: #0a1c33;        /* Judul Utama (Sangat Gelap / Kontras) */
+        --text-muted: #6c757d;          /* Teks Sekunder / Redup */
+        --border-color: #cce0ff;        /* Border Soft Biru */
+        --table-hover: rgba(13, 110, 253, 0.06); /* Efek Hover Tabel */
+        --shadow-color: rgba(13, 110, 253, 0.08); /* Bayangan Halus Biru */
     }
 
-    /* LIGHT MODE OVERRIDES */
-    body.light-theme {
-        --bg-main: #f4f6f9;
-        --bg-card: #ffffff;
-        --bg-card-sub: #f8fafc;
-        --bg-banner: linear-gradient(135deg, #0a192f 0%, #1e293b 100%);
-        --cyan-accent: #0d9488;
-        --cyan-hover: #0f766e;
-        --text-primary: #334155;
-        --text-heading: #0f172a;
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
-        --table-hover: rgba(13, 148, 136, 0.05);
-        --shadow-color: rgba(15, 23, 42, 0.08);
+    /* DARK MODE OVERRIDES (OPSIONAL) */
+    body.dark-theme {
+        --bg-main: #0a192f;
+        --bg-card: #112240;
+        --bg-card-sub: #1e3a5f;
+        --bg-banner: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        --cyan-accent: #3d8bfd;
+        --cyan-hover: #0d6efd;
+        --text-primary: #e2e8f0;
+        --text-heading: #ffffff;
+        --text-muted: #94a3b8;
+        --border-color: #233554;
+        --table-hover: rgba(61, 139, 253, 0.1);
+        --shadow-color: rgba(0, 0, 0, 0.3);
     }
 
     body {
@@ -44,16 +44,82 @@
         transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* ================= TOPBAR HEADER ================= */
+    .topbar-wrapper {
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px;
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    .topbar-search-box {
+        position: relative;
+        width: 320px;
+    }
+
+    .topbar-search-box input {
+        background: var(--bg-main);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 0.5rem 0.75rem 0.5rem 2.3rem;
+        font-size: 0.875rem;
+        width: 100%;
+        color: var(--text-heading);
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .topbar-search-box input:focus {
+        border-color: var(--cyan-accent);
+        background: #ffffff;
+        outline: none;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    }
+
+    .topbar-search-box i {
+        position: absolute;
+        left: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+    }
+
+    .btn-quick-kasir {
+        background: #10b981 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-quick-kasir:hover {
+        background: #059669 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
+    }
+
     /* HEADER BANNER */
     .dashboard-header-banner {
         background: var(--bg-banner) !important;
         border-radius: 20px;
         padding: 2.5rem 2.25rem;
         color: #ffffff !important;
-        box-shadow: 0 20px 40px var(--shadow-color);
+        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.25);
         position: relative;
         overflow: hidden;
-        border: 1px solid var(--border-color);
+        border: none;
         transition: all 0.3s ease;
     }
 
@@ -64,16 +130,16 @@
         right: -8%;
         width: 300px;
         height: 300px;
-        background: rgba(100, 255, 218, 0.05);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         pointer-events: none;
     }
 
     .date-badge {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
         color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 50px;
         padding: 0.4rem 1rem;
         font-size: 0.825rem;
@@ -83,38 +149,10 @@
         gap: 0.5rem;
     }
 
-    /* TOGGLE BUTTON DARK/LIGHT MODE */
-    .btn-theme-switcher {
-        background: rgba(100, 255, 218, 0.12);
-        color: var(--cyan-accent);
-        border: 1px solid var(--cyan-accent);
-        border-radius: 50px;
-        padding: 0.55rem 1.25rem;
-        font-weight: 700;
-        font-size: 0.85rem;
-        transition: all 0.25s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-    }
-
-    .btn-theme-switcher:hover {
-        background: var(--cyan-accent);
-        color: #0a192f;
-        box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
-    }
-
-    body.light-theme .btn-theme-switcher {
-        background: rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-        border-color: rgba(255, 255, 255, 0.4);
-    }
-
     /* QUICK ACTIONS BUTTONS */
     .btn-quick-action {
-        background: var(--cyan-accent);
-        color: #0a192f !important;
+        background: #ffffff;
+        color: var(--cyan-accent) !important;
         border-radius: 12px;
         padding: 0.65rem 1.25rem;
         font-weight: 700;
@@ -124,30 +162,31 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .btn-quick-action:hover {
-        background: var(--cyan-hover);
-        color: #0a192f !important;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(100, 255, 218, 0.35);
+        background: #f0f5ff;
+        color: var(--cyan-hover) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
 
     /* DASHBOARD CARDS */
     .dashboard-card {
-        border-radius: 22px;
+        border-radius: 20px;
         border: 1px solid var(--border-color) !important;
         background: var(--bg-card) !important;
         transition: all 0.3s ease;
-        box-shadow: 0 15px 35px var(--shadow-color);
+        box-shadow: 0 8px 25px var(--shadow-color);
         position: relative;
         overflow: hidden;
     }
 
     .dashboard-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
         border-color: var(--cyan-accent) !important;
+        box-shadow: 0 12px 30px rgba(13, 110, 253, 0.15);
     }
 
     .card-top-accent {
@@ -176,7 +215,7 @@
     }
 
     .bg-accent-subtle-custom {
-        background-color: rgba(100, 255, 218, 0.1) !important;
+        background-color: rgba(13, 110, 253, 0.1) !important;
         color: var(--cyan-accent) !important;
     }
 
@@ -202,7 +241,7 @@
 
     .table-custom th {
         color: var(--cyan-accent) !important;
-        font-size: 0.725rem;
+        font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.8px;
         font-weight: 700;
@@ -238,10 +277,11 @@
     }
 
     .action-tile:hover {
-        background-color: var(--bg-card);
+        background-color: #ffffff;
         border-color: var(--cyan-accent);
         color: var(--cyan-accent);
         transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
     }
 
     /* TEXT COLOR OVERRIDES */
@@ -252,12 +292,68 @@
     @media(max-width: 768px) {
         .dashboard-header-banner { padding: 1.5rem; }
         .dashboard-header-banner h1 { font-size: 1.5rem !important; }
+        .topbar-wrapper { flex-direction: column; gap: 0.75rem; align-items: stretch; }
+        .topbar-search-box { width: 100%; }
     }
 </style>
 
 <div class="container py-4">
 
-    {{-- HEADER BANNER + LIVE CLOCK & THEME SWITCHER --}}
+    {{-- TOPBAR SEARCH & NOTIFIKASI DROPDOWN --}}
+    <div class="topbar-wrapper">
+        <div class="topbar-search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Cari produk / no. transaksi...">
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between justify-content-md-end gap-3">
+            
+            {{-- DROPDOWN NOTIFIKASI --}}
+            <div class="dropdown">
+                <button class="btn btn-light position-relative rounded-circle border p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Notifikasi Stok" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: var(--bg-main); border-color: var(--border-color) !important;">
+                    <i class="bi bi-bell text-secondary fs-6"></i>
+                    @if(count($produkStokRendah) > 0 || count($produkStokHabis) > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                    @endif
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-2 mt-2" style="width: 280px; border-radius: 12px;">
+                    <li class="dropdown-header fw-bold text-dark fs-6">Pemberitahuan Stok</li>
+                    <li><hr class="dropdown-divider my-1"></li>
+
+                    @if(count($produkStokRendah) > 0)
+                        <li>
+                            <a class="dropdown-item small text-warning d-flex align-items-center gap-2 rounded py-2" href="#">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                <span>{{ count($produkStokRendah) }} Produk Stok Menipis</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(count($produkStokHabis) > 0)
+                        <li>
+                            <a class="dropdown-item small text-danger d-flex align-items-center gap-2 rounded py-2" href="#">
+                                <i class="bi bi-x-circle-fill"></i>
+                                <span>{{ count($produkStokHabis) }} Produk Stok Habis</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(count($produkStokRendah) == 0 && count($produkStokHabis) == 0)
+                        <li><span class="dropdown-item small text-muted text-center py-2">Semua stok produk aman</span></li>
+                    @endif
+                </ul>
+            </div>
+
+          {{-- TOMBOL KASIR --}}
+<a href="{{ route('penjualan.index') }}" class="btn btn-primary d-flex align-items-center gap-2 px-3 py-2 rounded-3 fw-bold border-0 shadow-sm" style="background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);">
+    <i class="bi bi-cart-plus-fill fs-6"></i>
+    <span>Buka Kasir</span>
+</a>
+        </div>
+    </div>
+
+    {{-- HEADER BANNER + LIVE CLOCK --}}
     <div class="dashboard-header-banner mb-4">
         <div class="row align-items-center g-3 position-relative" style="z-index: 1;">
             <div class="col-lg-7">
@@ -278,13 +374,8 @@
                 <p class="text-white-50 mb-0">Berikut adalah ringkasan aktivitas transaksi, inventaris, dan performa toko Anda.</p>
             </div>
 
-            {{-- TOMBOL SWITCH THEME & AKSES CEPAT --}}
+            {{-- TOMBOL AKSES CEPAT BANNER --}}
             <div class="col-lg-5 text-lg-end d-flex flex-wrap gap-2 justify-content-lg-end align-items-center">
-                <button type="button" id="themeToggleBtn" class="btn-theme-switcher">
-                    <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
-                    <span id="themeText">Dark Mode</span>
-                </button>
-
                 <a href="{{ route('penjualan.index') }}" class="btn-quick-action">
                     <i class="bi bi-cart-plus fs-5"></i> Kasir / Transaksi
                 </a>
@@ -632,9 +723,8 @@
 
 </div>
 
-{{-- SCRIPT REALTIME CLOCK & TOGGLE THEME SWITCHER --}}
+{{-- SCRIPT REALTIME CLOCK --}}
 <script>
-    // 1. Realtime Digital Clock
     function updateClock() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
@@ -647,37 +737,6 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
-
-    // 2. Dark/Light Mode Switcher
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeIcon = document.getElementById('themeIcon');
-    const themeText = document.getElementById('themeText');
-
-    function applyTheme(theme) {
-        if (theme === 'light') {
-            document.body.classList.add('light-theme');
-            if (themeIcon) themeIcon.className = 'bi bi-sun-fill';
-            if (themeText) themeText.textContent = 'Light Mode';
-        } else {
-            document.body.classList.remove('light-theme');
-            if (themeIcon) themeIcon.className = 'bi bi-moon-stars-fill';
-            if (themeText) themeText.textContent = 'Dark Mode';
-        }
-    }
-
-    // Load saved theme or default to dark
-    const currentTheme = localStorage.getItem('pos_theme') || 'dark';
-    applyTheme(currentTheme);
-
-    // Toggle click event
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', function() {
-            const isLight = document.body.classList.contains('light-theme');
-            const newTheme = isLight ? 'dark' : 'light';
-            localStorage.setItem('pos_theme', newTheme);
-            applyTheme(newTheme);
-        });
-    }
 </script>
 
 @endsection
